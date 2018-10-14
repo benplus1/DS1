@@ -1,0 +1,44 @@
+syntax = "proto3";
+package com.bulletinboard;
+option java_multiple_files = true;
+
+// Implement ProtoFile Here
+service Board {
+	rpc Post(postRequest) returns (postResponse) {}
+	rpc Get(getRequest) returns (getResponse) {}
+	rpc Delete(deleteRequest) returns (deleteResponse) {}
+	rpc List(listRequest) returns (listResponse) {}
+}
+
+message postRequest {
+	string title = 1;
+	string body = 2;
+}
+
+message getRequest {
+	string title = 1;
+}
+
+message deleteRequest {
+	string title = 1;
+}
+
+message listRequest {
+	int32 list = 1;
+}
+
+message postResponse {
+	string response = 1;
+}
+
+message getResponse {
+	string body = 1;
+}
+
+message deleteResponse {
+	string response = 1;
+}
+
+message listResponse {
+	repeated string titles = 1;
+}
